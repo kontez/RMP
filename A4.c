@@ -7,8 +7,7 @@
 
 // move functions to stringsort.c
 void PrintStringliste(char **stringliste){
-  // we expect a NULL terminated array, so we can just do this
-  for (; *stringliste; ++stringliste) {
+  for (; strncmp(*stringliste,"",1); ++stringliste) {
     puts(*stringliste);
   }
 }
@@ -33,7 +32,7 @@ void SortiereStrings(char **stringliste){
     swapped = false;
     char **base = stringliste;
     // if the next item is not the end of the array, then do an iteration
-    for (; *(base + 1); ++base) {
+    for (; strncmp(*(base + 1),"",1); ++base) {
       if (getNum(*base) > getNum(*(base+1))) {
         char *tmp = *base;
         *base = *(base + 1);
@@ -52,7 +51,8 @@ int main(void) {
     "Brombach      5 EUR",
     "Zaluskowski 120 EUR",
     "Osman        17 EUR",
-    NULL // if you put a NULL here, you can iterate on this pointer with a simple ++
+    ""
+//    NULL // if you put a NULL here, you can iterate on this pointer with a simple ++
   };
 
   puts("before: ");
